@@ -1,8 +1,7 @@
 <template>
 
   <div>
-    <h1>Posts</h1>
-    <h1 class="text-center">Work In progress</h1>
+    <h1 class="text-center">Posts</h1>
 
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
@@ -114,11 +113,9 @@ export default {
             page: postPage,
           },
         })
-        .then((response) => {
-  
+        .then((response) => {  
           this.posts = response.data.data;
           this.postsResponse = response.data;
-          console.log(this.posts);
         })
         .catch((e) => {
           console.error(e);
@@ -128,7 +125,6 @@ export default {
       axios
         .get("api/categories")
         .then((response) => {
-          
           this.categories = response.data;
         })
         .catch((e) => {

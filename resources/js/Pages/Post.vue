@@ -37,8 +37,12 @@ export default {
   mounted() {
     Axios.get("/api/posts/" + this.$route.params.slug)
       .then((response) => {
-        console.log(response);
-        this.post = response.data;
+        if (response.data.status === 404) {
+          this.$router.push({name: 'not-found'});
+        } else{
+          this.post = response.data;
+        }
+        
       })
       .catch((e) => {
         console.error(e);
